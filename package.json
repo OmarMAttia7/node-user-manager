@@ -1,0 +1,44 @@
+{
+  "name": "user-management-backend",
+  "version": "1.0.0",
+  "description": "A starter project for typescript projects with esbuild.",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "prettier src --write && eslint src --fix",
+    "ts-check": "tsc",
+    "build": "tsc --noEmit --incremental && swc ./src -d ./dist",
+    "prebuild:prod": "$npm_execpath run build",
+    "build:prod": "node scripts/build_prod",
+    "pretest": "$npm_execpath run build",
+    "test": "node scripts/test",
+    "start": "node dist/index",
+    "watch-compile": "swc ./src -d ./dist -w",
+    "watch-dev": "nodemon --watch \"dist/**/*\" -e js ./dist/index.js",
+    "dev": "$npm_execpath run watch-compile & $npm_execpath run watch-dev"
+  },
+  "author": "Omar M. Attia",
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.3.16",
+    "@types/jasmine": "^4.3.0",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "chokidar": "^3.5.3",
+    "esbuild": "^0.15.14",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "jasmine": "^4.5.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "knex": "^2.3.0",
+    "pg": "^8.8.0"
+  }
+}
