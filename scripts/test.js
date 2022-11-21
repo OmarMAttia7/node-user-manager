@@ -1,5 +1,6 @@
 import Jasmine from "jasmine";
 import console from "console";
+import process from "process";
 const jasmine = new Jasmine();
 
 async function beforeTest() {
@@ -8,6 +9,7 @@ async function beforeTest() {
 
 async function afterTest() {
   console.log("post-test process");
+  process.exit(0);
 }
 
 // Load configuration file
