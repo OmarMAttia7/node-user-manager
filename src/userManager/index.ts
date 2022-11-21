@@ -1,3 +1,3 @@
-import userManager from "./userManager";
+import UserManager from "./UserManager";
 
-export default userManager;
+export default UserManager;
