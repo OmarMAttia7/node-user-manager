@@ -3,5 +3,7 @@
 yarn.lock
 # Build files
 /dist
-/prod
+/build
 tsconfig.tsbuildinfo
+# Secrets
+.env
