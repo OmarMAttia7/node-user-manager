@@ -1,9 +1,9 @@
 import esbuild from "esbuild";
 
 esbuild.buildSync({
-  entryPoints: ['dist/index.js'],
+  entryPoints: ['build/index.js'],
   bundle: true,
-  outfile: "prod/index.js",
+  outfile: "dist/index.js",
   minify: true,
   platform: "node",
   format: "esm"
