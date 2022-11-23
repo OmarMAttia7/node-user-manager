@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const envVarNames = [
+  "ENV",
   "DB_HOST",
   "DB_PORT",
   "DB_USERNAME",
@@ -21,6 +22,7 @@ const validateEnvVars = (envVarNames: string[]): void => {
 validateEnvVars(envVarNames);
 
 const config = {
+  env: process.env.ENV,
   db: {
     host: process.env.DB_HOST as string,
     driver: process.env.DB_DRIVER as string,
