@@ -4,6 +4,7 @@ Uses Knex to perform db operations.
 
 ## Usage
 You can start by passing a knex db connection to a new instance of `UserManager`.
-```
-const userManager = new UserManager();
+```javascript
+const db = new knex({...config...});
+const userManager = new UserManager(db);
 ```
