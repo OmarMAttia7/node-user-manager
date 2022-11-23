@@ -1,9 +1,9 @@
 import knex from "knex";
 import config from "./config.js";
 let dbName;
-if(config.env === "test"){
+if (config.env === "test") {
   dbName = config.db.testDatabase;
-}else{
+} else {
   dbName = config.db.database;
 }
 
@@ -16,7 +16,7 @@ const db = knex({
     password: config.db.password,
     database: dbName,
   },
-  pool: {min: 0, max: 10}
+  pool: { min: 0, max: 10 },
 });
 
 export default db;
