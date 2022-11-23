@@ -1,14 +1,19 @@
 import Jasmine from "jasmine";
 import console from "console";
 import process from "process";
+import testDB from "./testDB.js";
 const jasmine = new Jasmine();
 
-async function beforeTest() {
-  console.log("pre-test process");
+process.env.ENV = "test";
+
+async function preTest() {
+  console.log("Pre-test scripts");
+  await testDB.create();
 }
 
-async function afterTest() {
-  console.log("post-test process");
+async function postTest() {
+  console.log("Post-test scripts");
+  await testDB.drop();
   process.exit(0);
 }
 
@@ -19,11 +24,11 @@ jasmine.loadConfigFile("./spec/support/jasmine.json");
 jasmine.exitOnCompletion = false;
 
 async function main() {
-  await beforeTest();
+  await preTest();
 
   await jasmine.execute();
 
-  await afterTest();
+  await postTest();
 }
 
 main();
