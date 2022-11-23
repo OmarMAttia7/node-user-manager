@@ -9,6 +9,7 @@ const envVarNames = [
   "DB_PASSWORD",
   "DB_DBNAME",
   "DB_DRIVER",
+  "DB_TEST_DBNAME"
 ];
 
 const validateEnvVars = (envVarNames: string[]): void => {
@@ -30,6 +31,7 @@ const config = {
     username: process.env.DB_USERNAME as string,
     password: process.env.DB_PASSWORD as string,
     database: process.env.DB_DBNAME as string,
+    testDatabase: process.env.DB_TEST_DBNAME as string
   },
 };
 
