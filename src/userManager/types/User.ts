@@ -8,4 +8,6 @@ const User = z.object({
   email: z.string().email(),
 });
 
+type User = z.infer<typeof User>;
+
 export default User;
