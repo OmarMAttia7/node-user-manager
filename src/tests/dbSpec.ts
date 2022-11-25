@@ -9,8 +9,7 @@ describe("Database Connection", () => {
 
   it("has a users table", async () => {
     const query = await db("users").select();
-    expect(query).toEqual([]);
-    console.log(query);
+    expect(query).toBeInstanceOf(Array);
   });
 });
 
