@@ -13,9 +13,9 @@ async function preTest() {
 
 function testScript() {
   const childProcess = exec("node ./scripts/test/jasmineTests");
-
+  
   childProcess.stdout.pipe(process.stdout);
-
+  childProcess.stderr.pipe(process.stderr);
   return new Promise((resolve) => {
     childProcess.on("exit", (exitCode) => resolve(exitCode));
   });
