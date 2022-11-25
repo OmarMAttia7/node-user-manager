@@ -1,3 +1,3 @@
-import UserManager from "./UserManager";
+import UserManager from "./UserManager.js";
 
 export default UserManager;

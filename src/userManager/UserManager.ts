@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import createUser, { userInfo } from "./model/createUser";
+import createUser, { userInfo } from "./model/createUser.js";
 
 class UserManager {
   #db: Knex;
