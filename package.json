@@ -6,13 +6,13 @@
   "scripts": {
     "lint": "prettier src --write && eslint src --fix",
     "ts-check": "tsc",
-    "build": "tsc --noEmit --incremental && swc ./src -d ./build",
+    "build": "tsc --noEmit --incremental && swc ./src -d ./build --copy-files",
     "prebuild:prod": "$npm_execpath run build",
     "build:prod": "node scripts/build_prod",
     "pretest": "$npm_execpath run build",
     "test": "node scripts/test",
     "start": "node dist/index",
-    "watch-compile": "swc ./src -d ./build -w",
+    "watch-compile": "swc ./src -d ./build --copy-files -w",
     "watch-dev": "nodemon --watch \"build/**/*\" -e js ./build/index.js",
     "dev": "$npm_execpath run watch-compile & $npm_execpath run watch-dev"
   },
