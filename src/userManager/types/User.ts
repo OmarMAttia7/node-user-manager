@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 const UserSchema = z.object({
+  id: z.number().optional(),
   username: z
     .string()
     .min(5, "username can't be less than 5 characters")
