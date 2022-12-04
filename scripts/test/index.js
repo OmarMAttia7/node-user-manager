@@ -13,7 +13,7 @@ async function preTest() {
 }
 
 function testScript() {
-  const childProcess = exec(`node scripts${_s}test${_s}jasmineTests`);
+  const childProcess = exec(`yarn node scripts${_s}test${_s}jasmineTests`);
   
   childProcess.stdout.pipe(process.stdout);
   childProcess.stderr.pipe(process.stderr);

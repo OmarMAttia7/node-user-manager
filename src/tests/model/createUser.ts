@@ -11,7 +11,7 @@ export default function createUserSuite(userManager: UserManager) {
         expect(newUser.id).toEqual(currentId);
         expect(newUser.username).toEqual(userInfo.username);
         expect(newUser.firstName).toEqual(userInfo.firstName);
-        expect(newUser.email).toEqual(userInfo.email);
+        expect(newUser.lastName).toEqual(userInfo.lastName);
         expect(newUser.email).toEqual(userInfo.email);
         currentId++;
       }

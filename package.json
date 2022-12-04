@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "A starter project for typescript projects with esbuild.",
   "main": "dist/index.js",
+  "packageManager": "yarn@3.3.0",
   "scripts": {
     "lint": "prettier src --write && eslint src --fix",
-    "ts-check": "tsc",
-    "build": "tsc --noEmit --incremental && swc ./src -d ./build --copy-files",
+    "ts-check": "$npm_execpath tsc",
+    "build": "$npm_execpath tsc --noEmit --incremental && swc ./src -d ./build --copy-files",
     "prebuild:prod": "$npm_execpath run build",
-    "build:prod": "node scripts/build_prod",
+    "build:prod": "yarn prebuild:prod && node scripts/build_prod",
     "pretest": "$npm_execpath run build",
-    "test": "node scripts/test",
+    "test": "yarn run pretest && node scripts/test",
     "start": "node dist/index",
     "watch-compile": "swc ./src -d ./build --copy-files -w",
     "watch-dev": "nodemon --watch \"build/**/*\" -e js ./build/index.js",
@@ -38,7 +39,7 @@
     "pg": "^8.8.0",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   },
   "dependencies": {
     "argon2": "^0.30.2",

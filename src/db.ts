@@ -1,5 +1,8 @@
-import knex from "knex";
+import knexPkg from "knex";
 import config from "./config.js";
+
+const { knex } = knexPkg;
+
 let dbName;
 if (config.env === "test") {
   dbName = config.db.testDatabase;
