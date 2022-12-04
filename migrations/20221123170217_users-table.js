@@ -10,6 +10,7 @@ export const up = function (knex) {
     table.string("last_name", 50);
     table.string("password", 100);
     table.text("email");
+    table.unique("email")
   });
 };
 
