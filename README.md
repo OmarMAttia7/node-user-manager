@@ -1,4 +1,4 @@
-# Node User Manager
+# NodeJS User Management System
 Basic user management system, performs standard CRUD operations on the user table in the database.
 Uses Knex to perform db operations so it should be compatible with most realational SQL database systems.
 
