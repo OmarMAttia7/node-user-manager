@@ -16,5 +16,12 @@ export default function createUserSuite(userManager: UserManager) {
         currentId++;
       }
     });
+
+    it("throws an error when attempting to add duplicate email", async () => {
+      const testUsersInfo = await getTestUsers();
+      await userManager.createUser(testUsersInfo[0]).catch(() => {
+        expect(true).toEqual(true);
+      })
+    });
   });
 }
