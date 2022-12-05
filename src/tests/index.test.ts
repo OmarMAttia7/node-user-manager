@@ -3,8 +3,8 @@ import dbSuite from "./dbSuite.js";
 import modelSuite from "./model/index.js";
 
 afterAll(async () => {
-    await db.destroy();
-})
+  await db.destroy();
+});
 
 dbSuite();
 modelSuite();
