@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import { hashPassword } from "../services/password.js";
-import { User } from "../types/User.js";
+import UserSchema, { User } from "../types/User.js";
 
 export type userInfo = {
   username: string;
@@ -14,6 +14,7 @@ export default async function createUser(
   db: Knex,
   userInfo: userInfo
 ): Promise<User> {
+  UserSchema.parse(userInfo);
   const hashedPassword = await hashPassword(userInfo.password);
 
   const queryResult = await db("users")
