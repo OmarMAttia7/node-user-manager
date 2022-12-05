@@ -21,7 +21,21 @@ export default function createUserSuite(userManager: UserManager) {
       const testUsersInfo = await getTestUsers();
       await userManager.createUser(testUsersInfo[0]).catch(() => {
         expect(true).toEqual(true);
-      })
+      });
+    });
+
+    it("throws an error when attempting to add an invalid email", async () => {
+      await userManager
+        .createUser({
+          email: "invalidemail",
+          username: "jhon",
+          firstName: "john",
+          lastName: "doe",
+          password: "13r9024jg1-3d9jf2of",
+        })
+        .catch(() => {
+          expect(true).toEqual(true);
+        });
     });
   });
 }
