@@ -12,7 +12,11 @@ class UserManager {
     return await createUser(this.#db, userInfo);
   }
 
-  deleteUser(arg0: number): Promise<User> {
+  async deleteUser(id: number): Promise<User> {
+    throw new Error("Method not implemented.");
+  }
+
+  async getUser(searchFilter: number | string): Promise<User> {
     throw new Error("Method not implemented.");
   }
 }
