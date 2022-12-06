@@ -1,4 +1,5 @@
 import UserManager from "../../index.js";
+import { SelectResult } from "../../userManager/model/getUser.js";
 import { User } from "../../userManager/types/User.js";
 
 export default function getUserSuite(userManager: UserManager) {
@@ -11,29 +12,36 @@ export default function getUserSuite(userManager: UserManager) {
       username: "derpfish123",
     };
 
-    function matchUserInfo(user: User) {
-      expect(user.id).toEqual(1);
-      expect(user.username).toEqual(testUserInfo.username);
-      expect(user.email).toEqual(testUserInfo.email);
+    function matchUserInfo(result: SelectResult) {
+      let user: User;
+      if (result.exists) {
+        user = result.user;
+        expect(user.id).toEqual(1);
+        expect(user.username).toEqual(testUserInfo.username);
+        expect(user.email).toEqual(testUserInfo.email);
+      }
     }
 
-    beforeAll(async () => {
+    beforeEach(async () => {
       await userManager.createUser(testUserInfo);
     });
 
     it("returns a user by id", async () => {
-      const user = await userManager.getUser(1);
-      matchUserInfo(user);
+      const result = await userManager.getUser(1);
+      expect(result.exists).toEqual(true);
+      matchUserInfo(result);
     });
 
     it("returns a user by username", async () => {
-      const user = await userManager.getUser(testUserInfo.username);
-      matchUserInfo(user);
+      const result = await userManager.getUser(testUserInfo.username);
+      expect(result.exists).toEqual(true);
+      matchUserInfo(result);
     });
 
     it("returns a user by email", async () => {
-      const user = await userManager.getUser(testUserInfo.email);
-      matchUserInfo(user);
+      const result = await userManager.getUser(testUserInfo.email);
+      expect(result.exists).toEqual(true);
+      matchUserInfo(result);
     });
   });
 }
