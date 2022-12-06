@@ -13,7 +13,8 @@
     "start": "node dist/index",
     "watch-compile": "swc ./src -d ./build --copy-files -w",
     "watch-dev": "nodemon --watch \"build/**/*\" -e js ./build/index.js",
-    "dev": "$npm_execpath run watch-compile & $npm_execpath run watch-dev"
+    "dev": "$npm_execpath run watch-compile & $npm_execpath run watch-dev",
+    "migrate": "node scripts/migrate"
   },
   "author": "Omar M. Attia",
   "type": "module",
