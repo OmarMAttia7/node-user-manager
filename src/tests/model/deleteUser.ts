@@ -1,9 +1,9 @@
 import UserManager from "../../index.js";
-import populateUsersTable from "./utils/populateUsersTable.js";
+import populateUsersTable from "../utils/populateUsersTable.js";
 
 export default function deleteUserSuite(userManager: UserManager) {
   describe("deleteUser()", () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
       await populateUsersTable(userManager);
     });
     it("deletes the specified user", async () => {
