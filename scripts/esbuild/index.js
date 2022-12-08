@@ -5,6 +5,6 @@ esbuild.buildSync({
   outfile: "dist/index.js",
   minify: true,
   platform: "node",
-  external: ["argon2"],
+  external: ["argon2", "zod"],
   format: "esm",
 });
