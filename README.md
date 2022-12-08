@@ -8,6 +8,8 @@ Uses Knex to perform db operations so it should be compatible with most realatio
 - [Database Schema](#database-schema)
 - [Usage](#usage)
   - [Create New User](#create-new-user)
+  - [Delete User Account](#delete-user-account)
+  - [Fetch User Info](#fetch-user-info)
 
 ## Database Schema
 
@@ -36,7 +38,7 @@ const userManager = new UserManager(db);
 
 ### Create New User
 
-`userManager.createUser(newUserInfo)` requires a user object as shown in the code snippet below, and will return a similiar `User` object, containing the user ID in the database but no password.
+`userManager.createUser(newUserInfo: User)` requires a user object as shown in the code snippet below, and will return a similiar `User` object, containing the user ID in the database but no password.
 
 #### Example
 
@@ -52,7 +54,7 @@ const newUser = await userManager.createUser({
 
 ### Delete User Account
 
-`userManager.deleteUser()` requires a user ID and returns a `User` object with the information of the deleted user except the password.
+`userManager.deleteUser(userID: number)` requires a user ID and returns a `User` object with the information of the deleted user except the password.
 
 #### Example
 
@@ -62,7 +64,11 @@ const deletedUser = await userManager.deleteUser(userID);
 
 ### Fetch User Info
 
-`userManager.getUser(searchFilter)` requires a user ID, username or email and will return a `User` object containing all user info except the password.
+`userManager.getUser(searchFilter: number | string)` requires a user ID, username or email and will return a `User` object containing all user info except the password.
+
+Fetching by ID is generally faster since no string parsing happens to validate if the input is an email, and the function checks for IDs first.
+
+#### Example
 
 ```javascript
 const user = await userManager.getUser(34);
