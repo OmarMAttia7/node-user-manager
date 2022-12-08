@@ -14,6 +14,7 @@
     "watch-compile": "swc ./src -d ./build --copy-files -w",
     "watch-dev": "nodemon --watch \"build/**/*\" -e js ./build/index.js",
     "dev": "$npm_execpath run watch-compile & $npm_execpath run watch-dev",
+    "jest": "yarn node --experimental-vm-modules $(yarn bin jest) ./build/tests",
     "migrate": "node scripts/migrate"
   },
   "author": "Omar M. Attia",

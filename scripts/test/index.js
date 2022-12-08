@@ -11,8 +11,12 @@ async function preTest() {
 }
 
 function testScript() {
-  const childProcess = spawn("yarn", ["run", "jest", "./build/tests"], {stdio: "inherit"});
-  
+  const childProcess = spawn(
+    "yarn",
+    ["run", "jest"],
+    { stdio: "inherit" }
+  );
+
   return new Promise((resolve) => {
     childProcess.on("exit", (exitCode) => resolve(exitCode));
   });
