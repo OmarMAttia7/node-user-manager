@@ -1,5 +1,6 @@
 import { Knex } from "knex";
 import createUser, { userInfo } from "./model/createUser.js";
+import deleteUser from "./model/deleteUser.js";
 import getUser, { SelectResult } from "./model/getUser.js";
 import { User } from "./types/User.js";
 
@@ -14,7 +15,7 @@ class UserManager {
   }
 
   async deleteUser(id: number): Promise<User> {
-    throw new Error("Method not implemented.");
+    return await deleteUser(this.#db, id);
   }
 
   async getUser(searchFilter: number | string): Promise<SelectResult> {
