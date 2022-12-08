@@ -11,6 +11,9 @@ export default function deleteUserSuite(userManager: UserManager) {
       expect(deletedUser.id).toEqual(1);
       expect(deletedUser.username).toBeDefined();
       expect(deletedUser.email).toBeDefined();
+
+      const userExists = (await userManager.getUser(1)).exists;
+      expect(userExists).toEqual(false);
     });
   });
 }
