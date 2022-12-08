@@ -2,6 +2,7 @@ import { Knex } from "knex";
 import { hashPassword } from "../services/password.js";
 import DBUser from "../types/DBUser.js";
 import UserSchema, { User } from "../types/User.js";
+import returnColumns from "./returnColumns.js";
 
 export type userInfo = {
   username: string;
@@ -26,7 +27,7 @@ export default async function createUser(
       email: userInfo.email,
       password: hashedPassword,
     })
-    .returning(["id", "username", "first_name", "last_name", "email"]);
+    .returning(returnColumns);
 
   const newUser = queryResult[0];
   return {
