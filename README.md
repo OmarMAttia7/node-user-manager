@@ -20,7 +20,7 @@ The service expects the specified users table to have the following structure:
 | username | unique - varchar(30) |
 | first_name | varchar(50) |
 | last_name | varchar(50) |
-| password_digest | char(hashLength) |
+| password_digest | char/varchar(100) |
 | email | unique - text |
 
 It is recommended that you implement e-mail pattern validation on the database table schema.

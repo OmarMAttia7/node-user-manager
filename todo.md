@@ -1,8 +1,5 @@
 # Next Steps
-* Add tests for model/updateUser()
-* Implement model/updateUser()
-* Add tests for model/getUserPassword()
-* Implement model/getUserPassword()
+* Refactor model/createUser() so it hashing is handled in UserManager instead;
 * Add tests for services/login()
 * Implement services/login()
 
