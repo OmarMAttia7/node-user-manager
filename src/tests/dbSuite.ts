@@ -1,6 +1,6 @@
-import db from "../db.js";
+import { Knex } from "knex";
 
-export default () => {
+export default (db: Knex) => {
   describe("Database Connection", () => {
     it("connects to database successfully.", async () => {
       const testMessage = "connected";

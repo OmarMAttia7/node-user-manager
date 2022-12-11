@@ -6,5 +6,5 @@ afterAll(async () => {
   await db.destroy();
 });
 
-dbSuite();
-modelSuite();
+dbSuite(db);
+modelSuite(db);
