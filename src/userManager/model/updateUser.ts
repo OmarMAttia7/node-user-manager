@@ -1,6 +1,5 @@
 import { Knex } from "knex";
 import DBUser from "../types/DBUser.js";
-import returnColumns from "./utils/returnColumns.js";
 
 type UpdateUserInfo = {
   first_name?: string;
