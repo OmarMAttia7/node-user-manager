@@ -6,7 +6,7 @@ import updateUser, { UpdateUserInfo } from "./model/updateUser.js";
 import { hashPassword } from "./services/password.js";
 import DBUser from "./types/DBUser.js";
 import NewUserInfo from "./types/NewUserInfo.js";
-import UserSchema, { User } from "./types/User.js";
+import UserSchema from "./types/User.js";
 
 class UserManager {
   #db: Knex;
@@ -16,8 +16,15 @@ class UserManager {
 
   async createUser(userInfo: NewUserInfo): Promise<DBUser> {
     UserSchema.parse(userInfo);
-    const newUserInfo: userInfo = Object.create(userInfo);
-    newUserInfo.password_digest = await hashPassword(userInfo.password);
+    const { username, first_name, last_name, email, password } = userInfo;
+    const hashedPassword = await hashPassword(password);
+    const newUserInfo: userInfo = {
+      username,
+      first_name,
+      last_name,
+      email,
+      password_digest: hashedPassword,
+    };
     return await createUser(this.#db, newUserInfo);
   }
 
