@@ -4,6 +4,7 @@ import getUserSuite from "./getUser.js";
 import deleteUserSuite from "./deleteUser.js";
 import resetUsersTable from "../utils/resetUsersTable.js";
 import { Knex } from "knex";
+import updateUserSuite from "./updateUser.js";
 
 function modelSuite(db: Knex) {
   describe("User Manager Model", () => {
@@ -16,6 +17,7 @@ function modelSuite(db: Knex) {
     createUserSuite(userManager);
     getUserSuite(userManager);
     deleteUserSuite(userManager);
+    updateUserSuite(userManager);
   });
 }
 

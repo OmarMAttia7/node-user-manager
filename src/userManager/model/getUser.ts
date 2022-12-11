@@ -1,13 +1,12 @@
 import { Knex } from "knex";
 import DBUser from "../types/DBUser.js";
 import { string as zString } from "zod";
-import { User } from "../types/User.js";
-import returnColumns from "./returnColumns.js";
+import returnColumns from "./utils/returnColumns.js";
 
 type SelectResult =
   | {
       exists: true;
-      user: User;
+      user: DBUser;
     }
   | {
       exists: false;
@@ -32,17 +31,10 @@ export default async function getUser(
     }
   }
 
-  const user = queryResult[0];
   if (queryResult[0] !== undefined) {
     return {
       exists: true,
-      user: {
-        id: user.id,
-        username: user.username,
-        firstName: user.first_name,
-        lastName: user.last_name,
-        email: user.email,
-      },
+      user: queryResult[0],
     };
   }
 

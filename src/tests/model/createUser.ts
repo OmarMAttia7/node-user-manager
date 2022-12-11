@@ -10,8 +10,8 @@ export default function createUserSuite(userManager: UserManager) {
         const newUser = await userManager.createUser(userInfo);
         expect(newUser.id).toEqual(currentId);
         expect(newUser.username).toEqual(userInfo.username);
-        expect(newUser.firstName).toEqual(userInfo.firstName);
-        expect(newUser.lastName).toEqual(userInfo.lastName);
+        expect(newUser.first_name).toEqual(userInfo.first_name);
+        expect(newUser.last_name).toEqual(userInfo.last_name);
         expect(newUser.email).toEqual(userInfo.email);
         currentId++;
       }
@@ -29,8 +29,8 @@ export default function createUserSuite(userManager: UserManager) {
         .createUser({
           email: "invalidemail",
           username: "jhon",
-          firstName: "john",
-          lastName: "doe",
+          first_name: "john",
+          last_name: "doe",
           password: "13r9024jg1-3d9jf2of",
         })
         .catch(() => {

@@ -8,7 +8,7 @@ export const up = function (knex) {
     table.string("username", 30);
     table.string("first_name", 50);
     table.string("last_name", 50);
-    table.string("password", 100);
+    table.string("password_digest", 100);
     table.text("email");
     table.unique("email");
     table.unique("username");

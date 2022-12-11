@@ -1,10 +1,9 @@
-type DBUser = {
-  id: number;
+type NewUserInfo = {
   first_name: string;
   last_name: string;
   username: string;
   email: string;
-  password_digest: string;
+  password: string;
 };
 
-export default DBUser;
+export default NewUserInfo;

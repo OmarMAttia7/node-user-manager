@@ -1,19 +1,20 @@
 import UserManager from "../../index.js";
 import { SelectResult } from "../../userManager/model/getUser.js";
-import { User } from "../../userManager/types/User.js";
+import DBUser from "../../userManager/types/DBUser.js";
+import NewUserInfo from "../../userManager/types/NewUserInfo.js";
 
 export default function getUserSuite(userManager: UserManager) {
   describe("getUser()", () => {
-    const testUserInfo = {
+    const testUserInfo: NewUserInfo = {
       email: "derpfish@example.com",
-      firstName: "Derpy",
-      lastName: "Fish",
+      first_name: "Derpy",
+      last_name: "Fish",
       password: "thederpiestofishes888",
       username: "derpfish123",
     };
 
     function matchUserInfo(result: SelectResult) {
-      let user: User;
+      let user: DBUser;
       if (result.exists) {
         user = result.user;
         expect(user.id).toEqual(1);

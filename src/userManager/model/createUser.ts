@@ -1,40 +1,22 @@
 import { Knex } from "knex";
-import { hashPassword } from "../services/password.js";
 import DBUser from "../types/DBUser.js";
-import UserSchema, { User } from "../types/User.js";
-import returnColumns from "./returnColumns.js";
 
 export type userInfo = {
   username: string;
-  firstName: string;
-  lastName: string;
-  password: string;
+  first_name: string;
+  last_name: string;
+  password_digest: string;
   email: string;
 };
 
 export default async function createUser(
   db: Knex,
   userInfo: userInfo
-): Promise<User> {
-  UserSchema.parse(userInfo);
-  const hashedPassword = await hashPassword(userInfo.password);
+): Promise<DBUser> {
 
-  const queryResult = await db<DBUser>("users")
-    .insert({
-      username: userInfo.username,
-      first_name: userInfo.firstName,
-      last_name: userInfo.lastName,
-      email: userInfo.email,
-      password: hashedPassword,
-    })
-    .returning(returnColumns);
+  const [queryResult] = await db<DBUser>("users")
+    .insert(userInfo)
+    .returning("*");
 
-  const newUser = queryResult[0];
-  return {
-    id: newUser.id,
-    username: newUser.username,
-    firstName: newUser.first_name,
-    lastName: newUser.last_name,
-    email: newUser.email,
-  };
+  return queryResult;
 }
