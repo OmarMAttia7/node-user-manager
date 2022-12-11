@@ -13,7 +13,6 @@ export default async function createUser(
   db: Knex,
   userInfo: userInfo
 ): Promise<DBUser> {
-
   const [queryResult] = await db<DBUser>("users")
     .insert(userInfo)
     .returning("*");

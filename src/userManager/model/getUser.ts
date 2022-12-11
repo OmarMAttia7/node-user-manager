@@ -23,9 +23,7 @@ export default async function getUser(
     if (zString().email().safeParse(filter).success) {
       queryResult = await query.where("email", filter).select();
     } else {
-      queryResult = await query
-        .where("username", filter)
-        .select();
+      queryResult = await query.where("username", filter).select();
     }
   }
 
