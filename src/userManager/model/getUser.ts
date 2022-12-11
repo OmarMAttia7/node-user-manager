@@ -1,7 +1,6 @@
 import { Knex } from "knex";
 import DBUser from "../types/DBUser.js";
 import { string as zString } from "zod";
-import returnColumns from "./utils/returnColumns.js";
 
 type SelectResult =
   | {
@@ -18,16 +17,15 @@ export default async function getUser(
 ): Promise<SelectResult> {
   const query: Knex.QueryBuilder<DBUser> = db<DBUser>("users");
   let queryResult: DBUser[];
-  const selectProperties = returnColumns;
   if (typeof filter === "number") {
-    queryResult = await query.where("id", filter).select(selectProperties);
+    queryResult = await query.where("id", filter).select();
   } else {
     if (zString().email().safeParse(filter).success) {
-      queryResult = await query.where("email", filter).select(selectProperties);
+      queryResult = await query.where("email", filter).select();
     } else {
       queryResult = await query
         .where("username", filter)
-        .select(selectProperties);
+        .select();
     }
   }
 
