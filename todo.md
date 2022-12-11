@@ -1,5 +1,4 @@
 # Next Steps
-* Refactor model/createUser() so it hashing is handled in UserManager instead;
 * Add tests for services/login()
 * Implement services/login()
 
